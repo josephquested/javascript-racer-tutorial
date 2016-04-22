@@ -45,7 +45,7 @@ Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight 
 ```
 This concludes our basic HTML setup. If you want, you can now open index.html in chrome and inspect your masterpiece. So far, admittedly, it is a little underwhelming... You will be able to see the header, but the table is invisible. This is because we have no styling what-so-ever, so let's add an `index.css` file and get it looking pretty.
 
-### 1. index.css:
+### 2. index.css:
 Create an index.css file, and give it the following rules:
 ```
 .racer_table td {
@@ -78,12 +78,20 @@ Now, there's one more step here before we can actually see this on our page. We 
 Notice how it's placed below the normalize.css reference. It's probably important to do it in this order. I haven't tested it, but I am scared that we could potentially normalize our index.css if we did it the other way around!
 Open up index.html in chrome now and you should be able to see your beautiful rows and cells. Now let's make them do something.
 
-1. index.js:
+### 3. index.js:
+Create an index.js file, and start it off with the following three lines:
+
 ```
 document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('keyup', handleKeyPress, false)
 })
+```
 
+So let's go through this piece by piece:
+`document.addEventListener('DOMContentLoaded', function() {`
+
+
+<!-- ```
 function handleKeyPress (e) {
   if (e.which == 81) {
     movePlayer(1)
@@ -111,4 +119,4 @@ function checkForVictory (nextCell, playerInt) {
     window.location.reload()
   }
 }
-  ```
+  ``` -->
