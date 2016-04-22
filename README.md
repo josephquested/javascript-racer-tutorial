@@ -78,7 +78,7 @@ Now, there's one more step here before we can actually see this on our page. We 
 Notice how it's placed below the normalize.css reference. It's probably important to do it in this order. I haven't tested it, but I am scared that we could potentially normalize our index.css if we did it the other way around!
 Open up index.html in chrome now and you should be able to see your beautiful rows and cells. Now let's make them do something.
 
-1. create index.js:
+1. index.js:
 ```
 document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('keyup', handleKeyPress, false)
