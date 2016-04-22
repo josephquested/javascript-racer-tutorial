@@ -17,7 +17,7 @@ First, we need to set up the basic environment. Create an index.html document an
 This will all be pretty familiar stuff to you at this point, possibly with the exception of `href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">`.
 This line simply calls in a CSS script that 'normalizes' our stylesheet. It means that we don't need to worry about any unexpected styling rules spoiling our fun.
 
-Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive classes. That'll make it easier to select them later on when we start using our Javascript. Add the following code into the `<body>  </body>` section of your HTML.
+Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive IDs and classes. That'll make it easier to select them later on when we start using our Javascript. Add the following code into the `<body>  </body>` section of your HTML.
  ```
  <h1>Javascript Racer</h1>
  <table class="racer_table">
@@ -43,9 +43,10 @@ Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight 
    </tr>
  </table>
 ```
-This concludes our basic HTML setup. If you want, you can now open index.html in chrome and inspect your masterpiece so far. Admittedly it's going to be a little underwhelming... You will be able to see the header, but the table is invisible. This is because we have no styling what-so-ever, so let's add an `index.css` file and get it looking pretty.
+This concludes our basic HTML setup. If you want, you can now open index.html in chrome and inspect your masterpiece. So far, admittedly, it is a little underwhelming... You will be able to see the header, but the table is invisible. This is because we have no styling what-so-ever, so let's add an `index.css` file and get it looking pretty.
 
 ### 1. index.css:
+Create an index.css file, and give it the following rules:
 ```
 .racer_table td {
   background-color: LightGrey;
@@ -61,6 +62,21 @@ This concludes our basic HTML setup. If you want, you can now open index.html in
   background-color: blue;
 }
 ```
+Here we are doing three things. First, we're setting all of our cells (`<tr>`) to be LightGrey, and giving them the size of 100px by 100px. Now our cells will exist physically, and we'll be able to distinguish them from the white background. Next, we set our player colors. I've entered red and blue, but you can set them to any color you fancy.
+
+Now, there's one more step here before we can actually see this on our page. We need to add a reference to our `index.css` file in the `<head> ... </head>` element of our `index.html` document. Let's do that now.
+
+```
+<head>
+  ...
+  <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  ...
+</head>
+```
+
+Notice how it's placed below the normalize.css reference. It's probably important to do it in this order. I haven't tested it, but I am scared that we could potentially normalize our index.css if we did it the other way around!
+Open up index.html in chrome now and you should be able to see your beautiful rows and cells. Now let's make them do something.
 
 1. create index.js:
 ```
