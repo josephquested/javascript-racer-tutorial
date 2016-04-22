@@ -17,7 +17,7 @@
 This will all be pretty familiar stuff to you at this point, possibly with the exception of `href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">`.
  This line simply calls in a CSS script that 'normalizes' our stylesheet. It means that we don't need to worry about any unexpected styling rules spoiling our fun.
 
- 1. Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive classes. That'll make it easier to select them later on when we start using our Javascript. Add the following code into the `<body>  </body>` section of your HTML.
+ 2. Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive classes. That'll make it easier to select them later on when we start using our Javascript. Add the following code into the `<body>  </body>` section of your HTML.
  ```
  <h1>Javascript Racer</h1>
  <table class="racer_table">
@@ -44,7 +44,7 @@ This will all be pretty familiar stuff to you at this point, possibly with the e
  </table>
  ```
 
-<!--
+
 ### 1. index.css:
 ```
 .racer_table td {
@@ -81,4 +81,4 @@ function handleKeyPress (e) {
   }
 }
 
-  ``` -->
+  ```
