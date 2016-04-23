@@ -164,12 +164,36 @@ Now, the last two lines of our function, thankfully, are much easier to understa
 cell[0].className = ''
 nextCell.className = 'active' + playerInt
 ```
-First, we set the `className` of our `cell` variable to an empty string. This means that we are no longer in that cell, and it will return back to the LightGrey color we set in our CSS earlier. Then, we give our `nextCell` variable the an active className. We're doing a little bit of *string concatenation* again here. It's going to set the className to be either `active1` or `active2`, depending on which player we're moving.
+First, we set the `className` of our `cell` variable to an empty string. This means that we are no longer in that cell, and it will return back to the LightGrey color we set in our CSS earlier. Then, we give our `nextCell` variable the an active className. We're doing a little bit of *string concatenation* again here. It's going to set the className to be either `active1` or `active2`, depending on which player we're moving. Your index.js file should now look like this:
+```
+$(document).ready(function() {
+  $(document).keyup(handleKeyPress)
+})
+
+function handleKeyPress (e) {
+  if (e.which == 81) {
+    movePlayer(1)
+  }
+
+  if (e.which == 80) {
+    movePlayer(2)
+  }
+}
+
+function movePlayer (playerInt) {
+  var cell = $('.active' + playerInt)
+  var nextCell = $(cell).closest('td').next()
+
+  cell.removeClass()
+  nextCell.addClass('active' + playerInt)
+}
+```
 
 #### Linking Javascript into our HTML
 Only one step left, and then we'll have a (somewhat) working version of our racer game. Back in `index.html`, we'll add a `<script>` tag at the very bottom of our `<head> ... </head>` element:
 ```
 <!-- index.html -->
+
 <head>
   ...
   <script src="index.js"></script>
