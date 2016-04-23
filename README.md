@@ -136,7 +136,7 @@ function movePlayer (playerInt) {
 So, there's a lot of stuff going on here, let's take it line by line.
 The first line, `function movePlayer (playerInt) {`, is pretty straight forward. Our function takes one argument, it's an int representing either 'player1' (`movePlayer(1)`), or player2 (`movePlayer(2)`).
 
-##### Assigning the row and cell variables
+#### Assigning the row and cell variables
 Now, in order to move our player, we need three things. We need the row they're on, we need the cell they're currently in, and we need the *next* cell, the one they're moving to. That's what these three lines are doing:
 ```
 var row = document.getElementById('player' + playerInt + '_strip')
@@ -147,7 +147,7 @@ First, we declare a new variable called `row`, and we use another `document` fun
 
 The next line, `var cell = document.getElementsByClassName('active' + playerInt)`, does pretty much exactly the same thing. Except now, we're finding the cell the player is in by it's class, either `active1` or `active2`, and we're using the same *string concatenation* technique. There is one little difference in what we're getting back there though, and it's a wee semantic trick. Note that it's get **Elements** ByClassName (plural) not get **Element** (singular). This is because it's used to find multiple elements with the same class. In this situation, it would be better to use IDs for the player cells too, like we did with the rows. However, it's useful to have experience with both ID *and* Class selection methods, so I decided to leave the classes in there for a bit of extra practice.
 
-##### Assigning the nextCell variable
+#### Assigning the nextCell variable
 Now... `var nextCell = row.cells[cell[0].cellIndex + 1]`, is a little complex. I'm going to dodge the bullet here, and recommend you do some [stack overflow] (http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets) reading on using square brackets to access data in arrays. But I'll try break this down as best I can: We are accessing the `cells` inside our  `row` variable, and we're specifying that we want the one *after* our currently active cell. (Hence the `+ 1`).
 
 This is really the tricky part: `cells[cell[0].cellIndex + 1]`. I understand that this will be confusing. It _is_ confusing. It's made even worse by the fact that our `cell` variable, is actually an **array with one cell inside it**, because of that `getElementsByClassName` function we talked about earlier. It is designed to return us an array with all the matching elements inside, but we are selecting only one element. So our cell variable actually looks kinda like this:
@@ -158,7 +158,7 @@ Finally, we get the position of that cell within the row, by calling it's `.cell
 That got a little scary for a moment there, so maybe take a break, drink some water, then come back and read that section again. Nested indexes are a really tricky but important concept to get your head around.  
 **Don't feel bad if you don't understand it, only feel bad if you're not attempting to understand it.**
 
-##### Setting the classes
+#### Setting the classes
 
 checkForVictory(nextCell, playerInt)
 
