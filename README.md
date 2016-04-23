@@ -82,25 +82,26 @@ Open up index.html in chrome now and you should be able to see your beautiful ro
 Create an index.js file, and start it off with the following three lines:
 
 ```
-document.addEventListener('DOMContentLoaded', function() {
-  document.addEventListener('keyup', handleKeyPress, false)
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('keyup', handleKeyPress)
 })
 ```
 
 So let's go through this piece by piece:
 
 ```
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 ```
-First we're calling on the `document` object. You can read more about it [here](http://www.w3schools.com/jsref/dom_obj_document.asp), essentially it's the owner of all our HTML elements. It has a function called `addEventListener`, that we can use to detect and respond to various events. We call it with the `DOMContentLoaded` argument, then open up an anonymous `function()`. This ensures that any code we place inside our anonymous function won't run until _after_ the HTML DOM is loaded. This prevents awkward situations where we try to do something to an HTML node, but the node hasn't been created yet.
+First we're calling on the `document` object. You can read more about it [here](http://www.w3schools.com/jsref/dom_obj_document.asp), essentially it's the owner of all our HTML elements. It has a function called `addEventListener`, that we can use to detect and respond to various events. We call it with the `DOMContentLoaded` argument, then open up an anonymous `function ()`. This ensures that any code we place inside our anonymous function won't run until _after_ the HTML DOM is loaded. This prevents awkward situations where we try to do something to an HTML node, but the node hasn't been created yet.
 
 ```
-document.addEventListener('keyup', handleKeyPress, false)
+document.addEventListener('keyup', handleKeyPress)
 ```
-Next we add another event listener. `keyup`. This one listens for keyboard presses. More specifically; it listens for when you press a key, and then let go of it again. If we were just listening for when a key was pressed down, the race would be over within a split second. You could just hold down a key and your little racer would essentially teleport right to the end, because computers, it turns out, can process events really quickly. 
+Next we add another event listener. `keyup`. This one listens for keyboard presses. More specifically; it listens for when you press a key, and then let go of it again. If we were just listening for when a key was pressed down, the race would be over within a split second. You could just hold down a key and your little racer would essentially teleport right to the end, because computers, it turns out, can process events really quickly.
 
+Then we call a function. The function is called `handleKeyPress`, and it will be called whenever the `keyup` event occurs. But, here's the problem: `handleKeyPress` doesn't actually exist. We need to create it, so let's do that now.
 
-<!-- ```
+```
 function handleKeyPress (e) {
   if (e.which == 81) {
     movePlayer(1)
@@ -110,8 +111,10 @@ function handleKeyPress (e) {
     movePlayer(2)
   }
 }
+```
 
-function movePlayer (playerInt) {
+
+<!-- function movePlayer (playerInt) {
   var row = document.getElementById('player' + playerInt + '_strip')
   var cell = document.getElementsByClassName('active' + playerInt)
   var nextCell = row.cells[cell[0].cellIndex + 1]
@@ -128,4 +131,4 @@ function checkForVictory (nextCell, playerInt) {
     window.location.reload()
   }
 }
-  ``` -->
+  ```  -->
