@@ -169,11 +169,11 @@ First, we set the `className` of our `cell` variable to an empty string. This me
 #### Linking Javascript into our HTML
 Only one step left, and then we'll have a (somewhat) working version of our racer game. Back in `index.html`, we'll add a `<script>` tag at the very bottom of our `<head> ... </head>` element:
 ```
+<!-- index.html -->
 <head>
   ...
   <script src="index.js"></script>
 </head>
-
 ```
 Now, all going well, you can open up `index.html` in chrome, and be able to move your little racers with the "Q" and "P" keys. Congratulations!
 However, don't pat yourself on the back too hard, because there's a fatal problem here.
