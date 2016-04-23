@@ -156,7 +156,7 @@ This is really the tricky part: `cells[cell[0].cellIndex + 1]`. I understand tha
 Finally, we get the position of that cell within the row, by calling it's `.cellIndex` property. This tells us how far the racer is along the track. If the `row` is 8 cells long, and the `cell[0].cellIndex` is **3**, we know we're on the **forth** cell in the row. Because rows are _arrays_ of cells, so they start at 0. Index 3 = Cell 4. This means we can determine the next cell in the row, by calling `cell[0].cellIndex + 1`.
 
 That got a little scary for a moment there, so maybe take a break, drink some water, then come back and read that section again. Nested indexes are a really tricky but important concept to get your head around.  
-**Don't feel bad if you don't understand it, only feel bad if you're not attempting to understand it.**
+**Don't feel bad if you don't understand it, only feel bad if you're not trying to understand it.**
 
 #### Setting the classes
 Now, the last two lines of our function, thankfully, are much easier to understand.
@@ -205,7 +205,7 @@ However, don't pat yourself on the back too hard, because there's a fatal proble
 
 So let's turn our first problem, `Cannot set property 'className' of undefined` into the solution. Let's hop back over into `index.js` and add a new function.
 
-#### Defining a 'win state'
+#### I wanna win already
 ```
 function checkForVictory (nextCell, playerInt) {
   if (nextCell === undefined) {
@@ -230,4 +230,4 @@ function movePlayer (playerInt) {
 ```
 We pass in our `nextCell` and `playerInt` variables, and now, unless something has wrong terribly awry, you'll have a fully working racing game! Open up `index.html` in chrome and take a look.
 
-### 3. jQuery
+### 4. jQuery
