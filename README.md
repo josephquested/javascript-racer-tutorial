@@ -79,6 +79,7 @@ Notice how it's placed below the normalize.css reference. It's probably importan
 Open up index.html in chrome now and you should be able to see your beautiful rows and cells. Now let's make them do something.
 
 ### 3. index.js:
+#### Setting up the event listeners
 Create an index.js file, and start it off with the following three lines:
 
 ```
@@ -101,6 +102,8 @@ Next we add another event listener. `keyup`. This one listens for keyboard press
 
 Then we call a function. The function is called `handleKeyPress`, and it will be called whenever the `keyup` event occurs. But, here's the problem: `handleKeyPress` doesn't actually exist. We need to create it, so let's do that now.
 
+#### Handling key presses
+
 ```
 function handleKeyPress (e) {
   if (e.which == 81) {
@@ -112,6 +115,13 @@ function handleKeyPress (e) {
   }
 }
 ```
+So here's something interesting right off the bat. `function handleKeyPress (e) { ` The function takes an `e` parameter, but we're not passing it any arguments when we call it up on line 2! What's that about? Well, remember how it's being called inside the `document.addEventListener` function? That `e` stands for *e*-vent. It's an object that gets created when our `keydown `function is triggered, and it contains some useful information that gets automatically passed into our `handleKeyPress` function. Specifically, _which_ key was pressed.
+
+That's where these lines `if (e.which == 81) {` and `if (e.which == 80) {` come into the picture. `e.which` gives us the *keycode* of whichever key was pressed. You don't need to worry about the specific numbers associated with keycodes, memorizing them would be a total waste of time. All you need to know is that every key on the keyboard has its own integer keycode, and that the keycodes for *"Q"* and *"P"* happen to be *81* and *80* for some reason.
+
+So, by saying `if (e.which == 80) {` we're saying, "IF the key I pressed has the keycode 80, do this thing...". And "this thing", in our situation, is moving the player. We do this with the `movePlayer()` function, but, again, this function doesn't exist yet. So let's write it now.
+
+#### Moving the players
 
 
 <!-- function movePlayer (playerInt) {
