@@ -230,4 +230,18 @@ function movePlayer (playerInt) {
 ```
 We pass in our `nextCell` and `playerInt` variables, and now, unless something has wrong terribly awry, you'll have a fully working racing game! Open up `index.html` in chrome and take a look.
 
-### 4. jQuery
+### 4. jQuery (optional)
+So, we have a working racer app built with plain ol', vanilla Javascript. Let's try spice things up a little though; we can slim down the code and make it easier to add new features by introducing [jQuery](https://api.jquery.com/). I won't get into what jQuery is or it's advantages too much, you can read about that yourself. The bottom line is this: jQuery is a library that helps us interact with HTML and the DOM, and gives us some useful methods that Javascript doesn't have.
+
+#### Setting up jQuery.
+There are a couple of different ways you can get jQuery into your project. It can be installed as a dependency using NPM, but for this tutorial we'll just import it as a `<script>` in our HTML. Add the following line into your `<head> ... </head>` tag.
+```
+<!-- index.html -->
+
+<head>
+  ...
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="index.js"></script>
+</head>
+```
+It sits just above the `index.js` tag. We need to make sure that it has been successfully loaded in before we try to use it in our own scripts.
