@@ -17,6 +17,15 @@ function movePlayer (playerInt) {
   var cell = document.getElementsByClassName('active' + playerInt)
   var nextCell = row.cells[cell[0].cellIndex + 1]
 
+  checkForVictory(nextCell, playerInt)
+
   cell[0].className = ''
   nextCell.className = 'active' + playerInt
+}
+
+function checkForVictory (nextCell, playerInt) {
+  if (nextCell === undefined) {
+    alert('Player ' + playerInt + ' wins!')
+    window.location.reload()
+  }
 }
