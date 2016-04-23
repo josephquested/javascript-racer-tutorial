@@ -88,7 +88,16 @@ document.addEventListener('DOMContentLoaded', function() {
 ```
 
 So let's go through this piece by piece:
-`document.addEventListener('DOMContentLoaded', function() {`
+
+```
+document.addEventListener('DOMContentLoaded', function() {
+```
+First we're calling on the `document` object. You can read more about it [here](http://www.w3schools.com/jsref/dom_obj_document.asp), essentially it's the owner of all our HTML elements. It has a function called `addEventListener`, that we can use to detect and respond to various events. We call it with the `DOMContentLoaded` argument, then open up an anonymous `function()`. This ensures that any code we place inside our anonymous function won't run until _after_ the HTML DOM is loaded. This prevents awkward situations where we try to do something to an HTML node, but the node hasn't been created yet.
+
+```
+document.addEventListener('keyup', handleKeyPress, false)
+```
+Next we add another event listener. `keyup`. This one listens for keyboard presses. More specifically; it listens for when you press a key, and then let go of it again. If we were just listening for when a key was pressed down, the race would be over within a split second. You could just hold down a key and your little racer would essentially teleport right to the end, because computers, it turns out, can process events really quickly. 
 
 
 <!-- ```
