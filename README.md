@@ -201,14 +201,33 @@ Only one step left, and then we'll have a (somewhat) working version of our race
 </head>
 ```
 Now, all going well, you can open up `index.html` in chrome, and be able to move your little racers with the "Q" and "P" keys. Congratulations!
-However, don't pat yourself on the back too hard, because there's a fatal problem here.
+However, don't pat yourself on the back too hard, because there's a fatal problem here... What happens when the racers reach the end of the track? Nothing! And if you open your developer console, you'll see this error getting thrown: `Uncaught TypeError: Cannot set property 'className' of undefined`. This is because now our `nextCell` variable is trying to access a cell that doesn't exist! And what's worse, the game never ends or resets. It just sits there.
 
+So let's turn our first problem, `Cannot set property 'className' of undefined` into the solution. Let's hop back over into `index.js` and add a new function.
 
-checkForVictory(nextCell, playerInt)
-
+#### Defining a 'win state'
+```
 function checkForVictory (nextCell, playerInt) {
   if (nextCell === undefined) {
     alert('Player ' + playerInt + ' wins!')
     window.location.reload()
   }
 }
+```
+Here we turn a bug into a solution. We write a function that takes two arguments, they are the `nextCell` and `playerInt` variables from our `movePlayer()` function. Inside our `if ()` statement, we check to see if the next cell is `undefined`. If it is, we know the racer is at the end of the track! If it is undefined, we issue a standard Javascript `alert`. If you haven't used an `alert` before, then you're in for a treat. They're super fun and annoying, like popup ads.
+
+Inside the alert, we do a little more string concatenation magic. The alert will read either *'Player 1 wins!'* or *'Player 2 wins!'*, depending on our `playerInt` variable. Then we call `window.location.reload()`. This nifty little function just reloads our browser page. It's a quick and easy reset for our game.
+
+Now, we just need to slip this new function into our `movePlayer` code somewhere. I think right in the middle. After we define our `nextCell` variable, but before we change its class:
+```
+function movePlayer (playerInt) {
+  ...
+  var nextCell = row.cells[cell[0].cellIndex + 1]
+
+  checkForVictory(nextCell, playerInt)
+  ...
+}
+```
+We pass in our `nextCell` and `playerInt` variables, and now, unless something has wrong terribly awry, you'll have a fully working racing game! Open up `index.html` in chrome and take a look.
+
+### 3. jQuery
