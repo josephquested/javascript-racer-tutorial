@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-  document.addEventListener('keyup', handleKeyPress, false)
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('keyup', handleKeyPress)
 })
 
 function handleKeyPress (e) {
