@@ -148,17 +148,36 @@ First, we declare a new variable called `row`, and we use another `document` fun
 The next line, `var cell = document.getElementsByClassName('active' + playerInt)`, does pretty much exactly the same thing. Except now, we're finding the cell the player is in by it's class, either `active1` or `active2`, and we're using the same *string concatenation* technique. There is one little difference in what we're getting back there though, and it's a wee semantic trick. Note that it's get **Elements** ByClassName (plural) not get **Element** (singular). This is because it's used to find multiple elements with the same class. In this situation, it would be better to use IDs for the player cells too, like we did with the rows. However, it's useful to have experience with both ID *and* Class selection methods, so I decided to leave the classes in there for a bit of extra practice.
 
 #### Assigning the nextCell variable
-Now... `var nextCell = row.cells[cell[0].cellIndex + 1]`, is a little complex. I'm going to dodge the bullet here, and recommend you do some [stack overflow] (http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets) reading on using square brackets to access data in arrays. But I'll try break this down as best I can: We are accessing the `cells` inside our  `row` variable, and we're specifying that we want the one *after* our currently active cell. (Hence the `+ 1`).
+Now... `var nextCell = row.cells[cell[0].cellIndex + 1]`, is a little complex. I'm going to somewhat dodge the bullet here, and recommend you do some [stack overflow] (http://stackoverflow.com/questions/4968406/javascript-property-access-dot-notation-vs-brackets) reading on using square brackets to access data in arrays. But I'll try break this down as best I can: We are accessing the `cells` inside our  `row` variable, and we're specifying that we want the one *after* our currently active cell.
 
 This is really the tricky part: `cells[cell[0].cellIndex + 1]`. I understand that this will be confusing. It _is_ confusing. It's made even worse by the fact that our `cell` variable, is actually an **array with one cell inside it**, because of that `getElementsByClassName` function we talked about earlier. It is designed to return us an array with all the matching elements inside, but we are selecting only one element. So our cell variable actually looks kinda like this:
 `var cell = [td]`. And in order to access that `td`, we need to use square bracket notation. (`cell[0]`).
 
-Finally, we get the position of that cell within the row, by calling it's `.cellIndex` property. This tells us how far the racer is along the track. If the `row` is 8 cells long, and the `cell[0].cellIndex` is **3**, we know we're on the *forth* cell in the row. Because rows are _arrays_ of cells remember, so they start at 0. Index 3 = Cell 4. This means we can determine the next cell in the row, by calling `cell[0].cellIndex + 1`.
+Finally, we get the position of that cell within the row, by calling it's `.cellIndex` property. This tells us how far the racer is along the track. If the `row` is 8 cells long, and the `cell[0].cellIndex` is **3**, we know we're on the **forth** cell in the row. Because rows are _arrays_ of cells, so they start at 0. Index 3 = Cell 4. This means we can determine the next cell in the row, by calling `cell[0].cellIndex + 1`.
 
 That got a little scary for a moment there, so maybe take a break, drink some water, then come back and read that section again. Nested indexes are a really tricky but important concept to get your head around.  
 **Don't feel bad if you don't understand it, only feel bad if you're not attempting to understand it.**
 
 #### Setting the classes
+Now, the last two lines of our function, thankfully, are much easier to understand.
+```
+cell[0].className = ''
+nextCell.className = 'active' + playerInt
+```
+First, we set the `className` of our `cell` variable to an empty string. This means that we are no longer in that cell, and it will return back to the LightGrey color we set in our CSS earlier. Then, we give our `nextCell` variable the an active className. We're doing a little bit of *string concatenation* again here. It's going to set the className to be either `active1` or `active2`, depending on which player we're moving.
+
+#### Linking Javascript into our HTML
+Only one step left, and then we'll have a (somewhat) working version of our racer game. Back in `index.html`, we'll add a `<script>` tag at the very bottom of our `<head> ... </head>` element:
+```
+<head>
+  ...
+  <script src="index.js"></script>
+</head>
+
+```
+Now, all going well, you can open up `index.html` in chrome, and be able to move your little racers with the "Q" and "P" keys. Congratulations!
+However, don't pat yourself on the back too hard, because there's a fatal problem here.
+
 
 checkForVictory(nextCell, playerInt)
 
