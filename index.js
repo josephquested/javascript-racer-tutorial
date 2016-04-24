@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
-  document.addEventListener('keyup', handleKeyPress)
+$(document).ready(function () {
+  $(document).keyup(handleKeyPress)
 })
 
 function handleKeyPress (e) {
@@ -13,18 +13,17 @@ function handleKeyPress (e) {
 }
 
 function movePlayer (playerInt) {
-  var row = document.getElementById('player' + playerInt + '_strip')
-  var cell = document.getElementsByClassName('active' + playerInt)
-  var nextCell = row.cells[cell[0].cellIndex + 1]
+  var cell = $('.active' + playerInt)
+  var nextCell = $(cell).next()
 
   checkForVictory(nextCell, playerInt)
 
-  cell[0].className = ''
-  nextCell.className = 'active' + playerInt
+  cell.removeClass()
+  nextCell.addClass('active' + playerInt)
 }
 
 function checkForVictory (nextCell, playerInt) {
-  if (nextCell === undefined) {
+   if (!$(nextCell).is('td')) {
     alert('Player ' + playerInt + ' wins!')
     window.location.reload()
   }
