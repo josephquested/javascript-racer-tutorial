@@ -245,3 +245,54 @@ There are a couple of different ways you can get jQuery into your project. It ca
 </head>
 ```
 It sits just above the `index.js` tag. We need to make sure that it has been successfully loaded in before we try to use it in our own scripts.
+
+#### Replacing our vanilla Javascript with jQuery functions
+Head over to `index.js`, and replace the first section:
+```
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('keyup', handleKeyPress)
+})
+```
+With the updated jQuery syntax:
+```
+$(document).ready(function () {
+  $(document).keyup(handleKeyPress)
+})
+```
+For the most part, you know you're looking at a jQuery method when you see **$** in front of a pair of brackets. This isn't always the case, because other libraries sometimes use dollar signs too. But when you're doing web development in Javascript, it's a fairly safe bet.
+
+There are a few things worth noting here. First, it's much shorter! Shorter is almost always better, and it's much less verbose. `addEventListener('DOMContentLoaded'` turns into simply, `.ready`. And the same for `.keyup`. jQuery's methods are very concise.
+
+Now, let's update our functions for jQuery. We don't need to update our `handleKeyPress` function. jQuery can't really help us there. But it probably could improve `movePlayer()`. Replace the `movePlayer()` function with the following:
+```
+function movePlayer (playerInt) {
+  var cell = $('.active' + playerInt)
+  var nextCell = $(cell).next()
+
+  checkForVictory(nextCell, playerInt)
+
+  cell.removeClass()
+  nextCell.addClass('active' + playerInt)
+}
+```
+Here, thanks to jQuery, we don't even *need* a reference to our table row anymore, so we can do away with that line entirely. The syntax for selecting the HTML elements is different, too. Instead of the cumbersome `var cell = document.getElementsByClassName('active' + playerInt)`, we can now simply put `var cell = $('.active' + playerInt)`. I'll let you dive into the specifics of jQuery selection methods yourself, in that article I referenced [earlier](https://api.jquery.com/). For the most part, you just need to remember that `$(.)` is used to select classes, and `$(#)` is used to select IDs.
+
+It gets really powerful when you combine selector methods together. That really complicated line from before: `var nextCell = row.cells[cell[0].cellIndex + 1]` is replaced by the *significantly* more gleanable: `var nextCell = $(cell).next()`.
+
+Finally, we remove the active class from our current cell, and add it to the next cell. It also looks way nicer using jQuery:
+```
+cell.removeClass()
+nextCell.addClass('active' + playerInt)
+```
+
+Finally, we need to update our `checkForVictory()` function.
+This one, weirdly, actually gets a little harder to understand with jQuery.
+Replace `checkForVictory()`:
+```
+function checkForVictory (nextCell, playerInt) {
+   if (!$(nextCell).is('td')) {
+    alert('Player ' + playerInt + ' wins!')
+    window.location.reload()
+  }
+}
+```

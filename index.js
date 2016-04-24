@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   $(document).keyup(handleKeyPress)
 })
 
@@ -14,7 +14,7 @@ function handleKeyPress (e) {
 
 function movePlayer (playerInt) {
   var cell = $('.active' + playerInt)
-  var nextCell = $(cell).closest('td').next()
+  var nextCell = $(cell).next()
 
   checkForVictory(nextCell, playerInt)
 
