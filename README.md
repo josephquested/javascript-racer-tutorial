@@ -287,8 +287,44 @@ nextCell.addClass('active' + playerInt)
 
 Finally, we need to update our `checkForVictory()` function.
 This one, weirdly, actually gets a little harder to understand with jQuery.
-Replace `checkForVictory()`:
+We're only going to change one line, it's the `if()` statement. Replace:
 ```
+  if (nextCell === undefined) {
+```
+With this:
+```
+ if (!$(nextCell).is('td')) {
+```
+The reason we have to do this is because when we jQuery select something that doesn't really exist (like the nextCell when there really *isn't* a next cell), it **doesn't** return `undefined`. It still returns a jQuery object, it just doesn't have a cell in it. So our line, `nextCell === undefined`, won't work when nextCell is a jQuery object. Because it will *never* be undefined, our condition will never be true.
+
+Instead we have to use `!$(nextCell).is('td')`, which is a little more complex, but still makes sense. We're saying if the next cell is **not**, (not is indicated by the **!** at the start of the `if` statement) a `<td>`, then we know we're at the end of the track. It's not quite as clear as before, but it's a worthwhile trade-off when weighed against jQuery's benefits.
+
+The end! Your `index.js` file should now look like this:
+```
+$(document).ready(function () {
+  $(document).keyup(handleKeyPress)
+})
+
+function handleKeyPress (e) {
+  if (e.which == 81) {
+    movePlayer(1)
+  }
+
+  if (e.which == 80) {
+    movePlayer(2)
+  }
+}
+
+function movePlayer (playerInt) {
+  var cell = $('.active' + playerInt)
+  var nextCell = $(cell).next()
+
+  checkForVictory(nextCell, playerInt)
+
+  cell.removeClass()
+  nextCell.addClass('active' + playerInt)
+}
+
 function checkForVictory (nextCell, playerInt) {
    if (!$(nextCell).is('td')) {
     alert('Player ' + playerInt + ' wins!')
@@ -296,3 +332,33 @@ function checkForVictory (nextCell, playerInt) {
   }
 }
 ```
+You can now open up `index.html` in chrome, and bask in the glory of your first jQuery app. Congratulations.
+
+### 5. What next?
+
+Whatever you want! Try using your new found powers, (and heaps of googling), to add some of the following features:
+
+- More players
+- A customizable racing track
+- Pick your own racer color
+- A scoreboard
+- Weapons
+- DLC
+- In app purchases
+- An iOS App
+- Popup ads
+- PS4/Xbox One support
+- Crafting
+- An extensive backstory
+- Liveaction Javascript Racer Hollywood Motion Picture
+- Cosplay
+- A trading card game
+- Vinyl release of the OST
+- Social sharing
+- Groundbreaking AI technology
+- Cheatcodes
+- Remake Pokemon Snap™ in your Javascript Racer engine
+- Do anything else with your life.
+
+**xoxo**
+**- Joseph Quested**
