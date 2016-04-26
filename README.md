@@ -1,5 +1,5 @@
 # javascript-racer-tutorial
-## Build a two player racing game with HTML, CSS and Javascript.
+## Build a two player racing game with HTML, CSS and JavaScript.
 
 ### 1. index.html:
 First, we need to set up the basic environment. Create an index.html document and fill it with the following boilerplate HTML code.
@@ -7,7 +7,7 @@ First, we need to set up the basic environment. Create an index.html document an
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
-    <title>Javascript Racer</title>
+    <title>JavaScript Racer</title>
     <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
   </head>
   <body>
@@ -17,9 +17,9 @@ First, we need to set up the basic environment. Create an index.html document an
 This will all be pretty familiar stuff to you at this point, possibly with the exception of `href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">`.
 This line simply calls in a CSS script that 'normalizes' our stylesheet. It means that we don't need to worry about any unexpected styling rules spoiling our fun.
 
-Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive IDs and classes. That'll make it easier to select them later on when we start using our Javascript. Add the following code into the `<body>  </body>` section of your HTML.
+Next, we'll set up an HTML `<table>` element, with two rows (`<tr>`), and eight cells (`<td>`) each. We'll give these elements some nice, descriptive IDs and classes. That'll make it easier to select them later on when we start using our JavaScript. Add the following code into the `<body>  </body>` section of your HTML.
  ```
- <h1>Javascript Racer</h1>
+ <h1>JavaScript Racer</h1>
  <table class="racer_table">
    <tr id="player1_strip">
      <td class="active1"></td>
@@ -190,7 +190,7 @@ function movePlayer (playerInt) {
 }
 ```
 
-#### Linking Javascript into our HTML
+#### Linking JavaScript into our HTML
 Only one step left, and then we'll have a (somewhat) working version of our racer game. Back in `index.html`, we'll add a `<script>` tag at the very bottom of our `<head> ... </head>` element:
 ```
 <!-- index.html -->
@@ -214,7 +214,7 @@ function checkForVictory (nextCell, playerInt) {
   }
 }
 ```
-Here we turn a bug into a solution. We write a function that takes two arguments, they are the `nextCell` and `playerInt` variables from our `movePlayer()` function. Inside our `if ()` statement, we check to see if the next cell is `undefined`. If it is, we know the racer is at the end of the track! If it is undefined, we issue a standard Javascript `alert`. If you haven't used an `alert` before, then you're in for a treat. They're super fun and annoying, like popup ads.
+Here we turn a bug into a solution. We write a function that takes two arguments, they are the `nextCell` and `playerInt` variables from our `movePlayer()` function. Inside our `if ()` statement, we check to see if the next cell is `undefined`. If it is, we know the racer is at the end of the track! If it is undefined, we issue a standard JavaScript `alert`. If you haven't used an `alert` before, then you're in for a treat. They're super fun and annoying, like popup ads.
 
 Inside the alert, we do a little more string concatenation magic. The alert will read either *'Player 1 wins!'* or *'Player 2 wins!'*, depending on our `playerInt` variable. Then we call `window.location.reload()`. This nifty little function just reloads our browser page. It's a quick and easy reset for our game.
 
@@ -231,7 +231,7 @@ function movePlayer (playerInt) {
 We pass in our `nextCell` and `playerInt` variables, and now, unless something has wrong terribly awry, you'll have a fully working racing game! Open up `index.html` in chrome and take a look.
 
 ### 4. jQuery (optional)
-So, we have a working racer app built with plain ol', vanilla Javascript. Let's try spice things up a little though; we can slim down the code and make it easier to add new features by introducing [jQuery](https://api.jquery.com/). I won't get into what jQuery is or it's advantages too much, you can read about that yourself. The bottom line is this: jQuery is a library that helps us interact with HTML and the DOM, and gives us some useful methods that Javascript doesn't have.
+So, we have a working racer app built with plain ol', vanilla JavaScript. Let's try spice things up a little though; we can slim down the code and make it easier to add new features by introducing [jQuery](https://api.jquery.com/). I won't get into what jQuery is or it's advantages too much, you can read about that yourself. The bottom line is this: jQuery is a library that helps us interact with HTML and the DOM, and gives us some useful methods that JavaScript doesn't have.
 
 #### Setting up jQuery.
 There are a couple of different ways you can get jQuery into your project. It can be installed as a dependency using NPM, but for this tutorial we'll just import it as a `<script>` in our HTML. Add the following line into your `<head> ... </head>` tag.
@@ -246,7 +246,7 @@ There are a couple of different ways you can get jQuery into your project. It ca
 ```
 It sits just above the `index.js` tag. We need to make sure that it has been successfully loaded in before we try to use it in our own scripts.
 
-#### Replacing our vanilla Javascript with jQuery functions
+#### Replacing our vanilla JavaScript with jQuery functions
 Head over to `index.js`, and replace the first section:
 ```
 document.addEventListener('DOMContentLoaded', function () {
@@ -259,7 +259,7 @@ $(document).ready(function () {
   $(document).keyup(handleKeyPress)
 })
 ```
-For the most part, you know you're looking at a jQuery method when you see **$** in front of a pair of brackets. This isn't always the case, because other libraries sometimes use dollar signs too. But when you're doing web development in Javascript, it's a fairly safe bet.
+For the most part, you know you're looking at a jQuery method when you see **$** in front of a pair of brackets. This isn't always the case, because other libraries sometimes use dollar signs too. But when you're doing web development in JavaScript, it's a fairly safe bet.
 
 There are a few things worth noting here. First, it's much shorter! Shorter is almost always better, and it's much less verbose. `addEventListener('DOMContentLoaded'` turns into simply, `.ready`. And the same for `.keyup`. jQuery's methods are very concise.
 
@@ -350,14 +350,14 @@ Whatever you want! Try using your new found powers, (and heaps of googling), to 
 - PS4/Xbox One support
 - Crafting
 - An extensive backstory
-- Liveaction Javascript Racer Hollywood Motion Picture
+- Liveaction JavaScript Racer Hollywood Motion Picture
 - Cosplay
 - A trading card game
 - Vinyl release of the OST
 - Social sharing
 - Groundbreaking AI technology
 - Cheatcodes
-- Remake Pokemon Snap™ in your Javascript Racer engine
+- Remake Pokemon Snap™ in your JavaScript Racer engine
 - Do anything else with your life.
 
 **xoxo**
